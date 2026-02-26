@@ -19,6 +19,29 @@ UpKiller’s job is simple:
 
 ---
 
+## Download & Run (non‑dev users)
+
+If you are **not a developer** and just want to use UpKiller:
+
+1. Go to the **latest release** page  
+   `https://github.com/Warreis2024/UpKiller/releases/latest`
+2. Under **Assets**, download **only** the file named something like:
+   - `UpKiller.exe`  
+   _Do **not** download the “Source code (.zip/.tar.gz)” files if you just want to run the app._
+3. After download, right‑click `UpKiller.exe` → **Run as administrator** (recommended).
+4. Windows Defender / SmartScreen may say *“Windows protected your PC”* because the exe is not code‑signed:
+   - Click **More info** → **Run anyway** if you trust the project, or
+   - Build the exe yourself from source (see the “Building & Single‑File Publish” section below).
+5. In the app:
+   - Type your filter (for example: `update "Calculator"`),
+   - Review the list and uncheck anything you don’t want touched,
+   - Click the blue 🔎 icon to scan again,
+   - Click the red 💀 icon to disable the selected items.
+
+UpKiller does **not** silently change anything: you always see what will be affected and must confirm before it acts.
+
+---
+
 ## Screenshot
 
 <p align="center">
@@ -131,21 +154,6 @@ Contributions are very welcome:
 - bug fixes and performance tweaks.
 
 Open an issue or PR on GitHub and we’ll take it from there.
-
----
-
-## Download & Run (non‑dev users)
-
-If you are **not a developer** and just want to use UpKiller:
-
-1. Go to the **Releases** page:  
-   `https://github.com/Warreis2024/UpKiller/releases/latest`
-2. Download `UpKiller.exe`.
-3. Right‑click → **Run as administrator** (recommended).
-4. Type your filter (for example: `update "Calculator"`), review the list, uncheck anything you don’t want touched.
-5. Press the blue search icon (scan) and then the red skull (disable) when you’re ready.
-
-UpKiller does **not** silently change anything: you always see what will be affected and must confirm before it acts.
 
 ---
 
