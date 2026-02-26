@@ -1,7 +1,5 @@
 # UpKiller
 
-# UpKiller
-
 <p align="center">
   <img src="img/img2.png" alt="UpKiller Logo" width="220" />
 </p>
@@ -136,6 +134,21 @@ Open an issue or PR on GitHub and we’ll take it from there.
 
 ---
 
+## Download & Run (non‑dev users)
+
+If you are **not a developer** and just want to use UpKiller:
+
+1. Go to the **Releases** page:  
+   `https://github.com/Warreis2024/UpKiller/releases/latest`
+2. Download `UpKiller.exe`.
+3. Right‑click → **Run as administrator** (recommended).
+4. Type your filter (for example: `update "Calculator"`), review the list, uncheck anything you don’t want touched.
+5. Press the blue search icon (scan) and then the red skull (disable) when you’re ready.
+
+UpKiller does **not** silently change anything: you always see what will be affected and must confirm before it acts.
+
+---
+
 ## License
 
 This project is released under the **MIT License**.  
@@ -144,7 +157,7 @@ See [`LICENSE`](LICENSE) for full details.
 # UpKiller
 
 <p align="center">
-  <img src="img/img1.png" alt="UpKiller Logo" width="180" />
+  <img src="img/img2.png" alt="UpKiller Logo" width="180" />
 </p>
 
 Windows'ta sessizce arka planda kalan `update` odakli process, service ve scheduled task kalintilarini temizlemek icin yazilmis kucuk ama etkili bir arac.
@@ -156,14 +169,7 @@ Bircok yazilim kurulumdan sonra kendi guncelleme mekanizmasini sisteme ekler. Uy
 
 UpKiller tam bu noktada devreye girer: listele, kontrol et, sec ve devre disi birak.
 
----
-
-## Ekran Goruntusu
-
-> UI goruntusu bu repoya eklenecek (`docs/upkiller-ui.png`).
-
----
-
+ 
 ## Neden UpKiller?
 
 - Gereksiz arka plan calismalarini azaltir.
