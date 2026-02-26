@@ -7,6 +7,7 @@
     <RootNamespace>UKiller</RootNamespace>
     <AssemblyName>UpKiller</AssemblyName>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>img\img2.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,7 @@
   <ItemGroup>
     <Resource Include="img\img1.png" />
     <Resource Include="img\img2.png" />
+    <Resource Include="img\img2.ico" />
   </ItemGroup>
 
   <ItemGroup>

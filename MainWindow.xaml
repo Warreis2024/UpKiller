@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="UpKiller - Update &amp; App Killer" Height="650" Width="1000" MinWidth="980" MinHeight="620"
+        Icon="img/img2.ico"
         WindowStartupLocation="CenterScreen"
         Background="#FFFFFF" Foreground="#111827"
         StateChanged="Window_StateChanged"
