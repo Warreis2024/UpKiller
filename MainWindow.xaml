@@ -1,0 +1,204 @@
+<Window x:Class="UKiller.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="UpKiller - Update &amp; App Killer" Height="650" Width="1000" MinWidth="980" MinHeight="620"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFFFFF" Foreground="#111827"
+        StateChanged="Window_StateChanged"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Background" Value="#2563EB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#1D4ED8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="MinWidth" Value="110"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#111827"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Padding" Value="4,2"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#111827"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" CornerRadius="8" Padding="8" Background="#F9FAFB" BorderBrush="#E5E7EB" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- 1. blok: Filter -->
+                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" Margin="4,0,8,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="FilterLabelTextBlock" Text="Filter:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                        <TextBox x:Name="FilterTextBox"
+                                 Width="330"
+                                 Height="48"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"
+                                 VerticalContentAlignment="Top"
+                                 Text="update"
+                                 KeyDown="FilterTextBox_KeyDown"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="FilterHintTextBlock" Text="Use spaces for multi keywords. Example: update edge calc"
+                               Margin="0,4,0,0"
+                               FontSize="11"
+                               Foreground="#6B7280"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <TextBlock x:Name="LanguageLabelTextBlock" Text="Language:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                        <ComboBox x:Name="LanguageComboBox" Width="70" SelectionChanged="LanguageComboBox_SelectionChanged">
+                            <ComboBoxItem Content="EN" Tag="en"/>
+                            <ComboBoxItem Content="TR" Tag="tr"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                        <TextBlock x:Name="AutoScanLabelTextBlock" Text="Auto scan (min):" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                        <TextBox x:Name="AutoScanMinutesTextBox" Width="40" Text="5" LostFocus="AutoScanMinutesTextBox_LostFocus"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- 2. blok: Logo -->
+                <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Width="120" Height="120" Stretch="Uniform" HorizontalAlignment="Center"
+                           Source="/img/img2.png"/>
+                    <TextBlock x:Name="AppTitleTextBlock" Text="UpKiller" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="AdminWarningTextBlock"
+                               Text="Tam yetki için yönetici olarak çalıştırın."
+                               FontSize="11"
+                               Foreground="Red"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- 3. blok: Dil + ayarlar + buton -->
+                <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,4,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,0,0">
+                        <CheckBox x:Name="IncludeWindowsUpdateCheckBox"
+                                  Content="Include Windows Update services"
+                                  VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,0,0">
+                        <CheckBox x:Name="ShowOnlyActiveCheckBox"
+                                  Content="Show only active items"
+                                  IsChecked="True"
+                                  VerticalAlignment="Center"
+                                  Checked="ShowOnlyActiveCheckBox_Changed"
+                                  Unchecked="ShowOnlyActiveCheckBox_Changed"/>
+                    </StackPanel>
+                    <CheckBox x:Name="AutoScanCheckBox"
+                              Content="Auto scan and disable on interval"
+                              VerticalAlignment="Center"
+                              Margin="0,2,0,0"
+                              Checked="AutoScanCheckBox_Checked"
+                              Unchecked="AutoScanCheckBox_Checked"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                        <Button x:Name="ScanButton"
+                                Content="🔎"
+                                Width="44"
+                                MinWidth="44"
+                                MaxWidth="44"
+                                Padding="0"
+                                Height="44"
+                                Click="ScanButton_Click"/>
+                        <Button x:Name="KillButton"
+                                Content="💀"
+                                Width="44"
+                                MinWidth="44"
+                                MaxWidth="44"
+                                Padding="0"
+                                Height="44"
+                                FontSize="20"
+                                Background="Transparent"
+                                BorderBrush="#DC2626"
+                                BorderThickness="1.5"
+                                Foreground="#DC2626"
+                                Click="KillButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Margin="0,8,0,0" CornerRadius="8" Padding="4" Background="#FFFFFF" BorderBrush="#E5E7EB" BorderThickness="1">
+            <DataGrid x:Name="TargetsGrid"
+                      CanUserAddRows="False"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      IsReadOnly="False"
+                      Background="#FFFFFF"
+                      Foreground="#111827"
+                      GridLinesVisibility="Horizontal"
+                      BorderBrush="#E5E7EB"
+                      BorderThickness="0">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsStoppedService}" Value="True">
+                                <Setter Property="Foreground" Value="#9CA3AF"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="✓" Width="40">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn x:Name="TypeColumn" Binding="{Binding Type}" Header="Type" Width="80" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="NameColumn" Binding="{Binding Name}" Header="Name" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="DisplayNameColumn" Binding="{Binding DisplayName}" Header="Display Name" Width="2*" IsReadOnly="True"/>
+                    <DataGridTextColumn x:Name="DetailsColumn" Binding="{Binding Extra}" Header="Details (PID / RAM / CPU)" Width="2*" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <Border Grid.Row="2" Margin="0,8,0,0" CornerRadius="8" Padding="4" Background="#F9FAFB" BorderBrush="#E5E7EB" BorderThickness="1">
+            <DockPanel>
+                <TextBlock x:Name="ReportLabelTextBlock" Text="Report:" DockPanel.Dock="Top" Margin="4"/>
+                <TextBox x:Name="ReportTextBox"
+                         IsReadOnly="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Disabled"
+                         Background="#FFFFFF"/>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
